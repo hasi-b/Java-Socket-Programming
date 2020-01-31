@@ -12,10 +12,10 @@ public class serverSide {
 		BufferedReader br = new  BufferedReader(new InputStreamReader(System.in));
 		ObjectInputStream oi = new ObjectInputStream(s.getInputStream());
 		Message msg = (Message)oi.readObject();
-		System.out.println("Obect header: "+msg.getHeader());
-		System.out.println("Obect header: "+msg.getData());
-		System.out.println("Obect header: "+msg.getProtocallId());
-		System.out.println("Obect header: "+msg.getTailors());
+		System.out.println("Object header: "+msg.getHeader());
+		System.out.println("Object header: "+msg.getData());
+		System.out.println("Object header: "+msg.getProtocallId());
+		System.out.println("Object header: "+msg.getTailors());
 		
 		
 		String recMsg="",sendMsg="";

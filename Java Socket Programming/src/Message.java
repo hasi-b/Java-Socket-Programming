@@ -21,6 +21,7 @@ public class Message implements Serializable{
 		String pID = binaryConvertionInteger(protocallId);
 		String databin = binaryConvertionString(data);
 		String tailorcheck = sum(head,pID,databin);
+		System.out.println(tailorcheck);
 		int tailorvalue = tailorcheck(tailorcheck);
 		setTailors(tailorvalue);
 		
