@@ -9,15 +9,64 @@ public class Message implements Serializable{
 	private int header;
 	private String data;
 	private int protocallId;
-	private boolean tailor;
+	private int tailors;
 	
-	public Message(int header,String data,int protocallId, boolean tailor) {
+	public Message(int header,String data,int protocallId) {
 		this.header = header;
 		this.data=data;
 		this.protocallId=protocallId;
-		this.tailor=tailor;
 		
 		
+		String head = binaryConvertionInteger(header);
+		String pID = binaryConvertionInteger(protocallId);
+		String databin = binaryConvertionString(data);
+		String tailorcheck = sum(head,pID,databin);
+		int tailorvalue = tailorcheck(tailorcheck);
+		setTailors(tailorvalue);
+		
+		
+	}
+	
+	public int tailorcheck(String tailor) {
+		int length = tailor.length();
+		int count=0;
+		for(int i=0;i<length;i++) {
+			if(tailor.charAt(i)=='1' ) {
+				count ++;
+			}
+			
+		}
+		if(count%2==0) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+		
+		
+	}
+	
+	public String sum(String head, String pID,String databin) {
+		int h = Integer.parseInt(head);
+		int protocallID = Integer.parseInt(pID);
+		int datab = Integer.parseInt(databin);
+		int sum = h + protocallID + datab;
+		String total = Integer.toBinaryString(sum);
+		return total;
+		
+		
+		
+	}
+	public String binaryConvertionInteger(int number) {
+		String converted = Integer.toBinaryString(number);
+		
+		return converted;
+	}
+	public String binaryConvertionString(String data) {
+		
+		String converted = "010101010";
+		
+		return converted;
 	}
 
 	public int getHeader() {
@@ -44,13 +93,15 @@ public class Message implements Serializable{
 		this.protocallId = protocallId;
 	}
 
-	public boolean isTailor() {
-		return tailor;
+	public int getTailors() {
+		return tailors;
 	}
 
-	public void setTailor(boolean tailor) {
-		this.tailor = tailor;
+	public void setTailors(int tailors) {
+		this.tailors = tailors;
 	}
+
+	
 	
 	
 	

@@ -9,7 +9,7 @@ public class clientSide {
 		DataOutputStream Dout = new DataOutputStream(cs.getOutputStream());
 		BufferedReader br = new  BufferedReader(new InputStreamReader(System.in));
 		ObjectOutputStream os = new ObjectOutputStream(cs.getOutputStream());
-		Message object = new Message(12,"WabbalabbaDubbDubb",1,true);
+		Message object = new Message(12,"Wab",1);
 		os.writeObject(object);
 		os.flush();
 	
@@ -19,7 +19,7 @@ public class clientSide {
 			Dout.writeUTF(sentMsg);
 			Dout.flush();
 			rcvMsg = Din.readUTF();
-			System.out.println("Server Says"+rcvMsg);
+			System.out.println("Server Says: "+rcvMsg);
 			
 		}
 		
